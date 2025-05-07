@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.13.3'  // 更新版本
+}
+
+group 'net.welights.jetbrainsplugin'
+version '1.1.1'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    maven { url 'https://www.jetbrains.com/intellij-repository/releases' }
+    maven { url 'https://cache-redirector.jetbrains.com/intellij-dependencies' }
+    maven { url 'https://plugins.gradle.org/m2/' }
+
+    maven { url 'https://maven.aliyun.com/repository/google' }
+    maven { url 'https://maven.aliyun.com/repository/central' }
+    maven { url 'https://maven.aliyun.com/repository/jcenter' }
+    mavenCentral()
+    jcenter()
+}
+
+// 使用新版本的 DSL 语法
+intellij {
+    // 使用本地安装的 IDEA
+    localPath.set('D:\\IntelliJ IDEA 2023.2.5')
+    // 或者使用环境变量指定路径
+    // localPath.set(System.getenv('INTELLIJ_HOME'))
+
+    // 不再需要指定版本
+    // version.set('2020.2.3')
+
+    updateSinceUntilBuild.set(false)
+}
+
+patchPluginXml {
+    changeNotes.set("""
+    v1.0.0 support real time price 支持虚拟货币价格的实时查询.<br>
+    v1.1.0 update query api 更新查询api.<br>
+    """)
+}
